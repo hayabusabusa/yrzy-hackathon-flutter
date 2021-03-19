@@ -26,7 +26,7 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: '${{ job.status }}' === 'success' ? 'CI が成功したみたい' : 'CI が失敗したみたい...',
+                pretext: '${{ job.status }}' === 'success' ? 'CI が成功したみたい' : 'CI が失敗したみたい...',
                 fields: [
                   {
                     title: 'repo',
@@ -45,7 +45,7 @@ jobs:
                   },
                   {
                     title: 'job',
-                    value: `${process.env.JOB}`,
+                    value: `${process.env.AS_JOB}`,
                     short: true
                   }
                 ]
