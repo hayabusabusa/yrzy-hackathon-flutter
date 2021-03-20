@@ -46,7 +46,7 @@ jobs:
           base64 --decode ExportOptions.plist.txt > ExportOptions.plist
 
       - name: Run fastlane lane
-        run: fastlane ios custome_lane # misstake of lane name
+        run: fastlane ios custom_lane
 
   teardown_on_success:
     if: ${{ success() }}
