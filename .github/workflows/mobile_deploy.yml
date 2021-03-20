@@ -39,6 +39,12 @@ jobs:
 
       - name: Install flutter dependency packages
         run: flutter pub get
+
+      - name: Encode export options plist file
+        run: |
+          echo "${{ secrets.EXPORT_OPTIONS_PLIST }}" > ExportOptions.plist.txt
+          base64 --decode ExportOptions.plist.txt > ExportOptions.plist
+          ls
   
   teardown:
     runs-on: ubuntu-latest
