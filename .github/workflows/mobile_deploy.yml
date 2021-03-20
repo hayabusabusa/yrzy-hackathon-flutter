@@ -44,7 +44,9 @@ jobs:
         run: |
           echo "${{ secrets.EXPORT_OPTIONS_PLIST }}" > ExportOptions.plist.txt
           base64 --decode ExportOptions.plist.txt > ExportOptions.plist
-          ls
+
+      - name: Run fastlane lane
+        run: fastlane ios custome_lane
   
   teardown:
     runs-on: ubuntu-latest
