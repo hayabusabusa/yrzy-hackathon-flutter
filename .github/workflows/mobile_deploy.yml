@@ -57,12 +57,12 @@ jobs:
                 pretext: '${{ job.status }}' === 'success' ? 'CI が成功したみたい :tada:' : 'CI が失敗したみたい... :sweat_drops:',
                 author_name: '${{ github.actor }}',
                 author_icon: '${{ github.event.sender.avatar_url }}',
-                text: '${{ env.COMMIT_MESSAGE }}',
+                title: '${{ env.COMMIT_MESSAGE }}',
                 fields: [
                   {
                     title: 'repo',
                     value: `${process.env.AS_REPO}`,
-                    short: true
+                    short: false
                   },
                   {
                     title: 'commit',
