@@ -47,17 +47,11 @@ jobs:
 
       - name: Run fastlane lane
         run: fastlane ios custome_lane # misstake of lane name
-
-  combine:
-    runs-on: ubuntu-latest
-    needs: [ deploy_android, deploy_ios ]
-
-    steps:
-      - run: echo 'Nothing'
   
   teardown:
+    if: ${{ failure() }}
     runs-on: ubuntu-latest
-    needs: combine
+    needs: [ deploy_android, deploy_ios ]
 
     steps:
       - name: Notify results to Slack
