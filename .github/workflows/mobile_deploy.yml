@@ -52,9 +52,9 @@ jobs:
       
       - name: Import certificate
         uses: Apple-Actions/import-codesign-certs@v1
-          with:
-            p12-file-base64: ${{ secrets.IOS_CERTIFICATE_BASE64 }}
-            p12-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+        with:
+          p12-file-base64: ${{ secrets.IOS_CERTIFICATE_BASE64 }}
+          p12-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
       
       - name: Archive and create ipa
         run: flutter build ipa --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
