@@ -46,11 +46,18 @@ jobs:
           base64 --decode ExportOptions.plist.txt > ExportOptions.plist
 
       - name: Run fastlane lane
-        run: fastlane ios custome_lane
+        run: fastlane ios custome_lane # misstake of lane name
+
+  combine:
+    runs-on: ubuntu-latest
+    needs: [ deploy_android, deploy_ios ]
+
+    steps:
+      - run: echo 'Nothing'
   
   teardown:
     runs-on: ubuntu-latest
-    needs: [ deploy_android, deploy_ios ]
+    needs: combine
 
     steps:
       - name: Notify results to Slack
