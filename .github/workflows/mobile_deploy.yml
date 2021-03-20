@@ -55,15 +55,13 @@ jobs:
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                 pretext: '${{ job.status }}' === 'success' ? 'CI が成功したみたい :tada:' : 'CI が失敗したみたい... :sweat_drops:',
+                author_name: '${{ github.actor }}',
+                author_icon: '${{ github.event.sender.avatar_url }}',
+                text: '${{ env.COMMIT_MESSAGE }}',
                 fields: [
                   {
                     title: 'repo',
                     value: `${process.env.AS_REPO}`,
-                    short: true
-                  },
-                  {
-                    title: 'author',
-                    value: `${process.env.AS_AUTHOR}`,
                     short: true
                   },
                   {
@@ -76,8 +74,7 @@ jobs:
                     value: `${process.env.AS_JOB}`,
                     short: true
                   }
-                ],
-                footer: `JOB TOOK ${process.env.AS_TOOK}`
+                ]
               }]
             }
         env:
