@@ -57,7 +57,7 @@ jobs:
                 pretext: '${{ job.status }}' === 'success' ? 'CI が成功したみたい :tada:' : 'CI が失敗したみたい... :sweat_drops:',
                 author_name: '${{ github.actor }}',
                 author_icon: '${{ github.event.sender.avatar_url }}',
-                title: '${{ github.event.head_commit.message }}',
+                text: '${{ github.event.head_commit.message }}',
                 fields: [
                   {
                     title: 'repo',
