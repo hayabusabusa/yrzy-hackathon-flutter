@@ -75,6 +75,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ios
+      
+      - name: Check current directory
+        run: ls
 
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
