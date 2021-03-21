@@ -49,7 +49,9 @@ jobs:
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           echo "${{ secrets.IOS_PROVISIONING_PROFILE }}" > development.mobileprovision.txt
+          echo "${{ secrets.IOS_RELEASE_PROVISIONING_PROFILE }}" > release.mobileprovision.txt
           base64 --decode development.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/YRZY_Hackathon_Flutter_development.mobileprovision
+          base64 --decode release.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/YRZY_Hackathon_Flutter_Release.mobileprovision
       
       - name: Import certificate
         uses: Apple-Actions/import-codesign-certs@v1
