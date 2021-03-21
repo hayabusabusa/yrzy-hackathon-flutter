@@ -60,6 +60,14 @@ jobs:
       - name: Archive and create ipa
         run: flutter build ipa --debug --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
 
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: tester
+          file: build/ios/ipa/yrzy_hackathon.ipa
+
   teardown_on_success:
     if: ${{ success() }}
     runs-on: ubuntu-latest
