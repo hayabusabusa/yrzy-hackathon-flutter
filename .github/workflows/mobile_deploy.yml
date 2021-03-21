@@ -51,14 +51,14 @@ jobs:
           echo "${{ secrets.IOS_PROVISIONING_PROFILE }}" > development.mobileprovision.txt
           base64 --decode development.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/YRZY_Hackathon_Flutter_development.mobileprovision
       
-      - name: Import development certificate
+      - name: Import ad-hoc certificate
         uses: Apple-Actions/import-codesign-certs@v1
         with:
           p12-file-base64: ${{ secrets.IOS_CERTIFICATE_BASE64 }}
           p12-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
       
       - name: Archive and create ipa
-        run: flutter build ipa --debug --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
+        run: flutter build ipa --release --export-options-plist=ExportOptions.plist --build-number ${GITHUB_RUN_NUMBER}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
