@@ -25,6 +25,24 @@ jobs:
       
       - name: Install flutter dependency packages
         run: flutter pub get
+
+      - name: Encode release keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" > release.jks.txt
+          base64 --decode release.jks.txt > release.jks
+
+      - name: Build apk
+        run: |
+          export KEYSTORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
+          export KEY_ALIAS='${{ secrets.KEY_ALIAS }}'
+          export KEY_PASSWORD='${{ secrets.KEY_PASSWORD }}'
+          flutter build apk --release --build-number ${GITHUB_RUN_NUMBER}
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android
+          path: build/app/outputs/flutter-apk/app-release.apk
       
   build_ios:
     runs-on: macos-latest
