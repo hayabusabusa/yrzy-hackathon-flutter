@@ -92,10 +92,15 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - name: Download artifact
+      - name: Download iOS artifact
         uses: actions/download-artifact@v2
         with:
           name: ios
+      
+      - name: Download Android artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: android
 
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
@@ -104,6 +109,14 @@ jobs:
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: tester
           file: yrzy_hackathon.ipa
+      
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_IOS_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: android_tester
+          file: app-release.apk
       
       - name: Remove all artifacts
         uses: c-hive/gha-remove-artifacts@v1
