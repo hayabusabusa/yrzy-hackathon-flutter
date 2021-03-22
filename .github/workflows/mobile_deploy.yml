@@ -71,7 +71,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [ build_android, build_ios ]
-    timeout-minutes: 30
+    timeout-minutes: 20
 
     steps:
       - name: Download artifact
@@ -90,7 +90,7 @@ jobs:
       - name: Remove all artifacts
         uses: c-hive/gha-remove-artifacts@v1
         with:
-          age: '0'
+          age: '0 days'
 
   teardown_on_success:
     if: ${{ success() }}
