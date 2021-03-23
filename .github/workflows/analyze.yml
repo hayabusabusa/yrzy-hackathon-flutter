@@ -1,0 +1,26 @@
+name: Flutter analyze
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    branches: [ main ]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    teps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      
+      - name: Install flutter dependency packages
+        run: flutter pub get
+      
+      - name: Run flutter analyze command
+        run: flutter analyze
