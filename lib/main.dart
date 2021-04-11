@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './lecture.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ImageListScreen(),
+      home: MyHomePage(title: 'kimotiiinnja~'),
     );
   }
 }
