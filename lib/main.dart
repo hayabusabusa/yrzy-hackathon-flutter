@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './lecture.dart';
-
 void main() {
   runApp(MyApp());
 }
