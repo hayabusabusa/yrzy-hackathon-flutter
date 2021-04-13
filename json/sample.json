@@ -1,0 +1,25 @@
+{
+    "array": [
+        {
+            "int": 0,
+            "string": "text",
+            "bool": true,
+            "strings": [
+                "text1",
+                "text2",
+                "text3"
+            ]
+        },
+        {
+            "int": 2,
+            "string": "text, text",
+            "bool": false,
+            "strings": [
+                "text1",
+                "text2",
+                "text3",
+                "text4"
+            ]
+        }
+    ]
+}
