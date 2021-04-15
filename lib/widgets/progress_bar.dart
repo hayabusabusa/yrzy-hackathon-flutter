@@ -76,14 +76,14 @@ class _ProgressBarState extends State<ProgressBar> with TickerProviderStateMixin
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            '${this.widget.current} / ${this.widget.max}',
+            '${widget.current} / ${widget.max}',
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 4),
           CustomPaint(
             size: Size.fromHeight(8),
             foregroundPainter: _ProgressPainter(
-              barColor: this.widget.barColor, 
+              barColor: widget.barColor, 
               currentProgress: _animation.value,
             ),
           ),
