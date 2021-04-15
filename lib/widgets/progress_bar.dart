@@ -10,12 +10,18 @@ class ProgressBar extends StatefulWidget {
   final int current;
   /// バーの色.
   final Color barColor;
+  /// テキスト部分の色.
+  final Color textColor;
+  /// バーの後ろの色.
+  final Color backgroundColor;
 
   ProgressBar({
     Key? key,
     required this.max,
     required this.current,
     this.barColor = Colors.blue,
+    this.textColor = Colors.black,
+    this.backgroundColor = Colors.black12,
   }): assert(current <= max), 
       super(key: key);
 
@@ -78,12 +84,16 @@ class _ProgressBarState extends State<ProgressBar> with TickerProviderStateMixin
           Text(
             '${widget.current} / ${widget.max}',
             textAlign: TextAlign.center,
+            style: TextStyle(
+              color: widget.textColor,
+            ),
           ),
           const SizedBox(height: 4),
           CustomPaint(
             size: Size.fromHeight(8),
             foregroundPainter: _ProgressPainter(
               barColor: widget.barColor, 
+              backgroundColor: widget.backgroundColor,
               currentProgress: _animation.value,
             ),
           ),
@@ -95,10 +105,12 @@ class _ProgressBarState extends State<ProgressBar> with TickerProviderStateMixin
 
 class _ProgressPainter extends CustomPainter {
   Color barColor;
+  Color backgroundColor;
   double currentProgress;
 
   _ProgressPainter({
     required this.barColor,
+    required this.backgroundColor,
     required this.currentProgress,
   });
 
@@ -108,7 +120,7 @@ class _ProgressPainter extends CustomPainter {
     final innerRrect = RRect.fromLTRBR(0, 0, size.width * currentProgress, size.height, Radius.circular(size.height / 2));
 
     final outerPaint = Paint();
-    outerPaint.color = Colors.black12;
+    outerPaint.color = backgroundColor;
     final innerPaint = Paint();
     innerPaint.color = barColor;
     
