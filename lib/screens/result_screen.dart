@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yrzy_hackathon/screens/screens.dart';
 
 class ResultScreen extends StatelessWidget {
   ///出題数
