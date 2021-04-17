@@ -7,6 +7,7 @@ import 'package:flutter/services.dart' show rootBundle;
 enum JsonFile {
   /// `/json/sample.json` の JSON ファイル.
   Sample,
+  Quiz,
 }
 
 class Json {
@@ -43,6 +44,8 @@ class Json {
     switch (file) {
       case JsonFile.Sample:
         return 'json/sample.json';
+      case JsonFile.Quiz:
+        return 'json/quiz.json';
     }
   }
 }
