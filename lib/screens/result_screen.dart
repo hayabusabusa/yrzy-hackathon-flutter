@@ -66,11 +66,7 @@ class ResultScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => HomeScreen(),
-                        fullscreenDialog: true,
-                      )
-                      );
+                     Navigator.of(context).popUntil((route) => route.isFirst); 
                     },
                     child: Text('戻る')),
               ],
