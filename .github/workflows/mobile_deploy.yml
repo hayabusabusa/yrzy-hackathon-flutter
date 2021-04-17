@@ -130,6 +130,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      - name: DEBUG Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Notify results to Slack
         uses: 8398a7/action-slack@v3
         with:
@@ -142,7 +147,6 @@ jobs:
                 pretext: 'CI が成功したみたい :tada:',
                 author_name: '${{ github.actor }}',
                 author_icon: '${{ github.event.sender.avatar_url }}',
-                text: '${{ github.event.head_commit.message }}',
                 fields: [
                   {
                     title: 'repo',
@@ -185,7 +189,6 @@ jobs:
                 pretext: 'CI が失敗したみたい... :sweat_drops:',
                 author_name: '${{ github.actor }}',
                 author_icon: '${{ github.event.sender.avatar_url }}',
-                text: '${{ github.event.head_commit.message }}',
                 fields: [
                   {
                     title: 'repo',
