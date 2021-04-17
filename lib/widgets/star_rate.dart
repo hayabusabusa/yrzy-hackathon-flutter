@@ -20,7 +20,7 @@ class StarRate extends StatelessWidget {
     this.fillColor = Colors.yellow,
     this.blankColor = Colors.grey,
   }): assert(
-        0 <= rate, // `rate` は負の数を許可しない.
+        rate >= 0, // `rate` は負の数を許可しない.
         rate <= maxRate // `rate` は `maxRate` を超えない. 
       ),
       super(key: key);
