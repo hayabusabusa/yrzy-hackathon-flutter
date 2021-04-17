@@ -8,7 +8,7 @@ void main() {
   // NOTE: Assets からの読み込みのため.
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group('JSON のテスト', () {
+  group('サンプルの JSON のテスト', () {
     test('フォーマットが正しいことをサンプルで検知できること', () {
       Json.load(JsonFile.Sample).then((jsonString) {
         expect(Json.checkFormat(jsonString), true);
@@ -29,7 +29,13 @@ void main() {
         expect(firstElement.strings, ['text1', 'text2', 'text3']);
       });
     });
+  });
 
-    // TODO: クイズの JSON が追加されたらテストを追加する
+  group('クイズの JSON のテスト', () {
+    test('フォーマットが正しいことを確認', () {
+      Json.load(JsonFile.Quiz).then((jsonString) {
+        expect(Json.checkFormat(jsonString), true);
+      });
+    });
   });
 }
