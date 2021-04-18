@@ -8,37 +8,8 @@ class QuizScreen extends StatefulWidget {
   _QuizScreenState createState() => _QuizScreenState();
 }
 
-/*
-class _Quiz {
-  final String question;
-  final String genre;
-  final String difficulty;
-  final String answer;
-  final String choices;
-
-  _Quiz({
-    required this.question,
-    required this.genre,
-    required this.difficulty,
-    required this.answer,
-    required this.choices,
-  });
-
-  factory _Quiz.fromJson(Map<String, dynamic> json) {
-    return _Quiz(
-      question: json['question'],
-      genre: json['genre'],
-      difficulty: json['difficulty'],
-      answer: json['answer'],
-      choices: json['choices'],
-    );
-  }
-}
-*/
-
 class _QuizScreenState extends State<QuizScreen> {
   int _current = 0;
-  String jsonString = '';
 
   @override
   Widget build(BuildContext context) {
