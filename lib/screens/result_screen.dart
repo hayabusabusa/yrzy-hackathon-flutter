@@ -64,10 +64,11 @@ class ResultScreen extends StatelessWidget {
                   ],
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                     Navigator.of(context).popUntil((route) => route.isFirst); 
-                    },
-                    child: Text('戻る')),
+                  onPressed: () {
+                    Navigator.of(context).popUntil((route) => route.isFirst); 
+                  },
+                  child: Text('戻る')
+                ),
               ],
             ),
           ),
