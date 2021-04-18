@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.4),
+      backgroundColor: Colors.black.withOpacity(0.6),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
@@ -64,10 +64,11 @@ class ResultScreen extends StatelessWidget {
                   ],
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                     Navigator.of(context).popUntil((route) => route.isFirst); 
-                    },
-                    child: Text('戻る')),
+                  onPressed: () {
+                    Navigator.of(context).popUntil((route) => route.isFirst); 
+                  },
+                  child: Text('戻る')
+                ),
               ],
             ),
           ),

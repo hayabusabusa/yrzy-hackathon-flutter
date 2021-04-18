@@ -49,10 +49,9 @@ class _QuizScreenState extends State<QuizScreen> {
             });
             
             if (_currentIndex == _quizzes.length - 1) {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects),
-                fullscreenDialog: true,
-              ));
+              Navigator.of(context).push(
+                FadeRoute(ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects))
+              );
             }
           },
           child: Text(choice),
@@ -84,7 +83,6 @@ class _QuizScreenState extends State<QuizScreen> {
           child: ProgressBar(
             max: _quizzes.isEmpty ? 1 : _quizzes.length,
             current: _quizzes.isEmpty ? 0 : _currentIndex + 1,
-            barColor: Colors.orange,
           ),
           preferredSize: ProgressBar.preferredSize
         ),
