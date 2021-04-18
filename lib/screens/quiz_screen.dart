@@ -69,8 +69,7 @@ class _QuizScreenState extends State<QuizScreen> {
             Expanded(
               child: SizedBox()
             ),
-            OutlineButton(
-              borderSide: BorderSide(width: 0.8),
+            OutlinedButton(
               onPressed: (){
                 setState(() {
                 _current = _current <= 9 ? _current + 1 : 0;
@@ -78,8 +77,7 @@ class _QuizScreenState extends State<QuizScreen> {
               },
               child: Text('国の名前'),
             ),
-            OutlineButton(
-              borderSide: BorderSide(width: 0.8),
+            OutlinedButton(
               onPressed: (){
                 setState(() {
                 _current = _current <= 9 ? _current + 1 : 0;
@@ -87,8 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
               },
               child: Text('人の名前'),
             ),
-            OutlineButton(
-              borderSide: BorderSide(width: 0.8),
+            OutlinedButton(
               onPressed: (){
                 setState(() {
                 _current = _current <= 9 ? _current + 1 : 0;
