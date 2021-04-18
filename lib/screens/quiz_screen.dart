@@ -49,10 +49,9 @@ class _QuizScreenState extends State<QuizScreen> {
             });
             
             if (_currentIndex == _quizzes.length - 1) {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects),
-                fullscreenDialog: true,
-              ));
+              Navigator.of(context).push(
+                FadeRoute(ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects))
+              );
             }
           },
           child: Text(choice),

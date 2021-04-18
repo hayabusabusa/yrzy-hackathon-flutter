@@ -6,7 +6,9 @@ class FadeRoute extends PageRouteBuilder {
   FadeRoute(
     this.page,
   ): super(
+      opaque: false,
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, _, child) => FadeTransition(opacity: animation, child: child,),
+      fullscreenDialog: true,
     );
 }
