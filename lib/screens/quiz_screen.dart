@@ -84,7 +84,6 @@ class _QuizScreenState extends State<QuizScreen> {
           child: ProgressBar(
             max: _quizzes.isEmpty ? 1 : _quizzes.length,
             current: _quizzes.isEmpty ? 0 : _currentIndex + 1,
-            barColor: Colors.orange,
           ),
           preferredSize: ProgressBar.preferredSize
         ),
