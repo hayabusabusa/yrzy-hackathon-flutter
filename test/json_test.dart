@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:yrzy_hackathon/entities/sample.dart';
+import 'package:yrzy_hackathon/entities/entities.dart';
 import 'package:yrzy_hackathon/utils/utils.dart';
 
 void main() {
@@ -35,6 +36,22 @@ void main() {
     test('フォーマットが正しいことを確認', () {
       Json.load(JsonFile.Quiz).then((jsonString) {
         expect(Json.checkFormat(jsonString), true);
+      });
+    });
+
+    test('モデルクラスにデコードできることを確認', () {
+      Json.load(JsonFile.Quiz).then((jsonString) {
+        final json = jsonDecode(jsonString);
+        final List<dynamic> quizzesJson = json['quizzes'];
+        final quizzes = quizzesJson.map((e) => Quiz.fromJson(e)).toList();
+        final quiz = quizzes.first;
+
+        expect(quiz.question, '4月3日は、「いんげん豆の日」だそうです。「いんげん」という名前の由来となったのは、次のうちどれでしょう？');
+        expect(quiz.genre, '雑学');
+        expect(quiz.difficulty, 2);
+        expect(quiz.answer, '人の名前');
+        expect(quiz.choices.length, 3);
+        expect(quiz.choices.first, '国の名前');
       });
     });
   });
