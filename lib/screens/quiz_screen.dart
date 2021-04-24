@@ -45,13 +45,14 @@ class _QuizScreenState extends State<QuizScreen> {
 
             setState(() {
               _numberOfCorrects = answer == choice ? _numberOfCorrects + 1 : _numberOfCorrects;
-              _currentIndex = _currentIndex < _quizzes.length - 1 ? _currentIndex + 1 : 0;
+              _currentIndex = _currentIndex < _quizzes.length ? _currentIndex + 1 : _currentIndex;
             });
             
-            if (_currentIndex == _quizzes.length - 1) {
+            if (_currentIndex == _quizzes.length) {
               Navigator.of(context).push(
                 FadeRoute(ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects))
               );
+              _currentIndex = _currentIndex - 1;
             }
           },
           child: Text(choice),
