@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
+    return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: Colors.black.withOpacity(0.6),
