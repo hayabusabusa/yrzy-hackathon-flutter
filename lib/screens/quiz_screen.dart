@@ -43,15 +43,16 @@ class _QuizScreenState extends State<QuizScreen> {
             setState(() {
               _numberOfCorrects =
                   answer == e ? _numberOfCorrects + 1 : _numberOfCorrects;
-              _currentIndex = _currentIndex < _quizzes.length-1 ? _currentIndex+1 : 0;
+              _currentIndex = _currentIndex < _quizzes.length ? _currentIndex + 1 : _currentIndex;
             });
-            if (_currentIndex == _quizzes.length-1) {
+            if (_currentIndex == _quizzes.length) {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => ResultScreen(
                     numberOfOuizzes: _quizzes.length,
                     numberOfCorrects: _numberOfCorrects),
-                fullscreenDialog: true,
+                    fullscreenDialog: true,
               ));
+              _currentIndex = _currentIndex - 1;
             }
           },
           child: Text(e),
