@@ -17,45 +17,44 @@ class _QuizScreenState extends State<QuizScreen> {
   List<Quiz> _quizzes = [];
 
   Widget _buildRowStars() {
-    final difficulty =
-        _quizzes.isEmpty ? 0 : _quizzes[_currentIndex].difficulty;
+    final difficulty = _quizzes.isEmpty ? 0 : _quizzes[_currentIndex].difficulty;
     final boolList = List<bool>.generate(5, (index) => index < difficulty);
-    print(boolList);
     return Row(
-      children: boolList.map((e) {
-        return e
-            ? Icon(Icons.star_rounded, color: Colors.yellow)
-            : Icon(Icons.star_rounded, color: Colors.grey);
+      children: boolList.map((isFilled) {
+        return isFilled
+          ? Icon(
+            Icons.star_rounded, 
+            color: Colors.yellow
+          )
+          : Icon(
+            Icons.star_rounded, 
+            color: Colors.grey
+          );
       }).toList(),
     );
   }
 
   Widget _buildColumnButtons() {
-    final List<String> choices =
-        _quizzes.isEmpty ? [] : _quizzes[_currentIndex].choices;
+    final List<String> choices = _quizzes.isEmpty ? [] : _quizzes[_currentIndex].choices;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: choices.map((e) {
+      children: choices.map((choice) {
         return OutlinedButton(
           onPressed: () {
-            final answer =
-              _quizzes.isEmpty ? '' : _quizzes[_currentIndex].answer;
+            final answer = _quizzes.isEmpty ? '' : _quizzes[_currentIndex].answer;
+
             setState(() {
-              _numberOfCorrects =
-                  answer == e ? _numberOfCorrects + 1 : _numberOfCorrects;
+              _numberOfCorrects = answer == answer == choice ? _numberOfCorrects + 1 : _numberOfCorrects;
               _currentIndex = _currentIndex < _quizzes.length ? _currentIndex + 1 : _currentIndex;
             });
             if (_currentIndex == _quizzes.length) {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => ResultScreen(
-                    numberOfOuizzes: _quizzes.length,
-                    numberOfCorrects: _numberOfCorrects),
-                    fullscreenDialog: true,
-              ));
+                FadeRoute(ResultScreen(numberOfOuizzes: _quizzes.length, numberOfCorrects: _numberOfCorrects))
+              );
               _currentIndex = _currentIndex - 1;
             }
           },
-          child: Text(e),
+          child: Text(choice),
         );
       }).toList(),
     );
@@ -81,43 +80,44 @@ class _QuizScreenState extends State<QuizScreen> {
       appBar: AppBar(
         title: Text('問題'),
         bottom: PreferredSize(
-            child: ProgressBar(
-              max: _quizzes.isEmpty ? 1 : _quizzes.length,
-              current: _quizzes.isEmpty ? 0 : _currentIndex + 1,
-              barColor: Colors.orange,
-            ),
-            preferredSize: ProgressBar.preferredSize),
+          child: ProgressBar(
+            max: _quizzes.isEmpty ? 1 : _quizzes.length,
+            current: _quizzes.isEmpty ? 0 : _currentIndex + 1,
+          ),
+          preferredSize: ProgressBar.preferredSize
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(24.0),
         child:
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Text(
-            '第${_currentIndex + 1}問 ${_quizzes.isEmpty ? '' : _quizzes[_currentIndex].genre}',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch, 
+          children: [
+            Text(
+              '第${_currentIndex + 1}問 ${_quizzes.isEmpty ? '' : _quizzes[_currentIndex].genre}',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Text(
-            _quizzes.isEmpty ? '読み込み中' : _quizzes[_currentIndex].question,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+            const SizedBox(height: 12,),
+            Text(
+              _quizzes.isEmpty ? '読み込み中' : _quizzes[_currentIndex].question,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          _buildRowStars(),
-          Expanded(child: SizedBox()),
-          _buildColumnButtons()
-        ]),
+            const SizedBox(height: 12,),
+            _buildRowStars(),
+            const Expanded(
+              child: const SizedBox(),
+            ),
+            _buildColumnButtons()
+          ]
+        ),
       ),
     );
   }
