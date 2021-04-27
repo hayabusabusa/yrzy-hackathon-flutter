@@ -76,7 +76,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
     Json.load(JsonFile.Quiz).then((jsonString) {
       final json = jsonDecode(jsonString);
-      List<dynamic> quizzesJson = json['quizzes'];
+      final List<dynamic> quizzesJson = json['quizzes'];
 
       // NOTE: クイズの順番をシャッフルする.
       quizzesJson.shuffle();
