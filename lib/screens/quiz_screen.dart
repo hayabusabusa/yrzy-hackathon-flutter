@@ -56,7 +56,7 @@ class _QuizScreenState extends State<QuizScreen> {
               Navigator.of(context).push(
                 FadeRoute(
                   ResultScreen(
-                    numberOfOuizzes: _quizzes.length,
+                    numberOfQuizzes: _quizzes.length,
                     numberOfCorrects: _numberOfCorrects
                   )
                 )

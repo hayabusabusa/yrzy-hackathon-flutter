@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   ///出題数
-  final int numberOfOuizzes;
+  final int numberOfQuizzes;
 
   ///正解数
   final int numberOfCorrects;
 
   ResultScreen({
-    required this.numberOfOuizzes,
+    required this.numberOfQuizzes,
     required this.numberOfCorrects,
   });
 
   Color _textColor() {
-    final percent = this.numberOfCorrects / this.numberOfOuizzes * 100;
+    final percent = this.numberOfCorrects / this.numberOfQuizzes * 100;
 
     if (percent <= 10.0) {
       return Colors.red;
@@ -47,7 +47,7 @@ class ResultScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${this.numberOfCorrects / this.numberOfOuizzes * 100}％',
+                        '${this.numberOfCorrects / this.numberOfQuizzes * 100}％',
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class ResultScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${this.numberOfOuizzes}問中${this.numberOfCorrects}問正解でした。',
+                        '${this.numberOfQuizzes}問中${this.numberOfCorrects}問正解でした。',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
