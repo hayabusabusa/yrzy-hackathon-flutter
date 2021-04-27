@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   ///出題数
-  final int numberOfOuizzes;
-
+  final int numberOfQuizzes;
   ///正解数
   final int numberOfCorrects;
 
   ResultScreen({
-    required this.numberOfOuizzes,
+    required this.numberOfQuizzes,
     required this.numberOfCorrects,
   });
 
   Color _textColor() {
-    final percent = this.numberOfCorrects / this.numberOfOuizzes * 100;
+    final percent = this.numberOfCorrects / this.numberOfQuizzes * 100;
 
     if (percent <= 10.0) {
       return Colors.red;
@@ -32,7 +31,7 @@ class ResultScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(40.0),
             child: Container(
-              padding: EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(24.0),
               color: Colors.white,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -47,7 +46,7 @@ class ResultScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${this.numberOfCorrects / this.numberOfOuizzes * 100}％',
+                        '${this.numberOfCorrects / this.numberOfQuizzes * 100}％',
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -55,23 +54,21 @@ class ResultScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${this.numberOfOuizzes}問中${this.numberOfCorrects}問正解でした。',
+                        '${this.numberOfQuizzes}問中${this.numberOfCorrects}問正解でした。',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                     ],
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .popUntil((route) => route.isFirst);
-                      },
-                      child: Text('戻る')),
+                    onPressed: () {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                    child: Text('戻る'),
+                  ),
                 ],
               ),
             ),
