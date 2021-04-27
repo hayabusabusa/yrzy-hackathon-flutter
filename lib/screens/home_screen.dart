@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const Expanded(
-              child: const SizedBox()
+              child: const SizedBox(),
             ),
             ElevatedButton(
               onPressed: () {
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   )
                 );
               },
-              child: Text('クイズを始める')
+              child: Text('クイズを始める'),
             ),
           ],
         ),
