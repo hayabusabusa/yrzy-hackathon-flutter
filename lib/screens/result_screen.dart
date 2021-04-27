@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ResultScreen extends StatelessWidget {
   ///出題数
   final int numberOfQuizzes;
-
   ///正解数
   final int numberOfCorrects;
 
@@ -32,7 +31,7 @@ class ResultScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(40.0),
             child: Container(
-              padding: EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(24.0),
               color: Colors.white,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -61,17 +60,15 @@ class ResultScreen extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20,),
                     ],
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .popUntil((route) => route.isFirst);
-                      },
-                      child: Text('戻る')),
+                    onPressed: () {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                    child: Text('戻る'),
+                  ),
                 ],
               ),
             ),
