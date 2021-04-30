@@ -44,11 +44,15 @@ class _QuizScreenState extends State<QuizScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: choices.map((choice) {
         return OutlinedButton(
-          onPressed: () {
+          onPressed: () async {
             final answer = _quizzes.isEmpty ? '' : _quizzes[_currentIndex].answer;
+            final isCorrect = answer == choice;
+            
+            // NOTE: 正解か不正解かのエフェクトを表示して、自動で非表示になるまで await で待機する.
+            await CorrectDialog.show(context: context, isCorrect: isCorrect);
 
             setState(() {
-              _numberOfCorrects = answer == choice ? _numberOfCorrects + 1 : _numberOfCorrects;
+              _numberOfCorrects = isCorrect ? _numberOfCorrects + 1 : _numberOfCorrects;
               _currentIndex = _currentIndex < _quizzes.length ? _currentIndex + 1 : _currentIndex;
             });
 
