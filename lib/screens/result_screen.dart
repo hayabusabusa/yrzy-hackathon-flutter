@@ -32,7 +32,7 @@ class ResultScreen extends StatelessWidget {
             padding: const EdgeInsets.all(40.0),
             child: Container(
               padding: const EdgeInsets.all(24.0),
-              color: Colors.white,
+              color: Theme.of(context).scaffoldBackgroundColor,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,

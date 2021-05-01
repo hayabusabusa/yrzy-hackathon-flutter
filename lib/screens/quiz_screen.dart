@@ -100,6 +100,8 @@ class _QuizScreenState extends State<QuizScreen> {
           child: ProgressBar(
             max: _quizzes.isEmpty ? 1 : _quizzes.length,
             current: _quizzes.isEmpty ? 0 : _currentIndex + 1,
+            textColor: Theme.of(context).textTheme.caption?.color ?? Colors.black,
+            backgroundColor: Theme.of(context).dividerColor,
           ),
           preferredSize: ProgressBar.preferredSize,
         ),
@@ -123,7 +125,6 @@ class _QuizScreenState extends State<QuizScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
               ),
             ),
             const SizedBox(height: 12,),
