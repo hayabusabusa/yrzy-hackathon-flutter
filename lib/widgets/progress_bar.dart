@@ -21,7 +21,7 @@ class ProgressBar extends StatefulWidget {
     required this.current,
     this.barColor = Colors.blue,
     this.textColor = Colors.black,
-    this.backgroundColor = Colors.black12,
+    this.backgroundColor = Colors.grey,
   }): assert(current <= max), 
       super(key: key);
 
@@ -85,6 +85,7 @@ class _ProgressBarState extends State<ProgressBar> with TickerProviderStateMixin
             '${widget.current} / ${widget.max}',
             textAlign: TextAlign.center,
             style: TextStyle(
+              fontWeight: FontWeight.bold,
               color: widget.textColor,
             ),
           ),
