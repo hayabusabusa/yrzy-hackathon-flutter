@@ -56,4 +56,11 @@ class Settings {
       ? value 
       : null;
   }
+
+  void remove({
+    required SettingsKey key
+  }) {
+    final keyString = _mapKeyToString(key);
+    _keyValue.remove(keyString);
+  }
 }
