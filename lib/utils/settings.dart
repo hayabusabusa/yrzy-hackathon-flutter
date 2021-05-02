@@ -37,7 +37,7 @@ class Settings {
   }
 
   /// 指定したキーに対応する値をセットする.
-  void setValue<T>({
+  void setValue<T extends Comparable>({
     required SettingsKey key, 
     required T value
   }) {
@@ -51,7 +51,7 @@ class Settings {
 
     // NOTE: 念のため型のチェックをして、違うなら何もしない.
     final storedValue = _keyValue[keyString];
-    if (!storedValue is T) {
+    if (!(storedValue is T)) {
       return;
     }
 
@@ -59,7 +59,7 @@ class Settings {
   }
  
  /// 指定したキーに対応する値を取り出す.
-  T? getValue<T>({
+  T? getValue<T extends Comparable>({
     required SettingsKey key,
   }) {
     final keyString = _mapKeyToString(key);
