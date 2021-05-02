@@ -1,15 +1,16 @@
-class SettingsManager {
+/// アプリに関する設定を管理するシングルトンクラス.
+class Settings {
 
   /// インスタンス保持用のプライベートな変数.
-  static SettingsManager? _instance;
+  static Settings? _instance;
 
-  static SettingsManager get instance {
+  static Settings get instance {
     final internal = _instance;
     if (internal != null) {
       return internal;
     }
 
-    final newInstance = SettingsManager._();
+    final newInstance = Settings._();
     _instance = newInstance;
 
     return newInstance;
@@ -17,5 +18,5 @@ class SettingsManager {
 
   // NOTE: 名前付きコンストラクタをプライベートにして、コンストラクタをプライベートでのみ利用できるようにしている.
   // こうすることで上記の `instance` からのみインスタンスを取得するように強制することができる.
-  SettingsManager._();
+  Settings._();
 }
