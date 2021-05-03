@@ -7,7 +7,7 @@ void main() {
     test('整数値の値が保存できること', () {
       final expectedValue = 1;
 
-      Settings.instance.setValue(key: SettingsKey.NumberOfQuiz, value: expectedValue);
+      Settings.instance.setValue<int>(key: SettingsKey.NumberOfQuiz, value: expectedValue);
 
       final storedValue = Settings.instance.getValue<int>(key: SettingsKey.NumberOfQuiz);
       expect(storedValue, equals(expectedValue));
